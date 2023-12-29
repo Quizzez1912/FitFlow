@@ -34,5 +34,9 @@ public class Levelbar : MonoBehaviour
         targetValue = slider.value + newXP;
     }
 
+    public void setXP(float newXP)
+    {
+        slider.value = newXP;   
+    }
 
 }
