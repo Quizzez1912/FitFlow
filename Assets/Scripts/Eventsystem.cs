@@ -9,6 +9,10 @@ using UnityEngine.UI;
 
 public class Eventsystem : MonoBehaviour
 {
+
+
+    #region Player Data 
+    // ---------------------------  PlayerData -------------------------
     private PlayerData playerData;
 
     public GameObject playerLevelObj;
@@ -27,9 +31,9 @@ public class Eventsystem : MonoBehaviour
     private TextMeshProUGUI traingGoalTxt;
 
 
+    #endregion
 
-    public int playerLevel = 0;
-    public float xp = 0;
+    
     public int streak = 0;
     public string rank = "A";
     public int levelExc1 = 0;
@@ -46,7 +50,8 @@ public class Eventsystem : MonoBehaviour
 
 
     // ------------------- Level Bar ---------------------------
-
+    public int playerLevel = 0;
+    public float xp = 0;
     public GameObject sliderObj;
     private Slider slider;
     private float targetValue;
