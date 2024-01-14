@@ -17,11 +17,14 @@ public class Eventsystem : MonoBehaviour
 
     public GameObject playerLevelObj;
     public GameObject streakObj;
+    public GameObject streakSymbolObj;
     public GameObject rankObj;
     public GameObject trainingTimeObj;
     public GameObject traingNameObj;
     public GameObject traingGoalObj;
 
+    public Texture streak_on;
+    public Texture streak_off;
 
     private TextMeshProUGUI playerLevelTxt;
     private TextMeshProUGUI streakTxt;
@@ -42,6 +45,7 @@ public class Eventsystem : MonoBehaviour
     public int levelExc4 = 0;
     public int levelExc5 = 0;
 
+    private RawImage streakImage;
 
 
     public int trainingTime = 0;
@@ -72,6 +76,12 @@ public class Eventsystem : MonoBehaviour
         traingGoalTxt = traingGoalObj.GetComponent<TextMeshProUGUI>();
 
 
+        streakImage = streakSymbolObj.GetComponent<RawImage>();
+
+        
+        
+
+
     }
 
 
@@ -95,6 +105,8 @@ public class Eventsystem : MonoBehaviour
             slider.value += fillSpeed * Time.deltaTime;
 
         }
+
+
 
 
     }
@@ -124,6 +136,8 @@ public class Eventsystem : MonoBehaviour
         streakTxt.text = streak.ToString();
         rankTxt.text = rank;
 
+        checkStreak();
+
     }
 
 
@@ -144,8 +158,21 @@ public class Eventsystem : MonoBehaviour
     }
 
 
+    // --------------- Streak Code ----------------------
 
 
+    private void checkStreak()
+    {
+
+        if (playerData.streak < 1)
+        {
+            streakImage.texture = (Texture)streak_off;
+        }
+        else
+        {
+            streakImage.texture = (Texture)streak_on;
+        }
+    }
 
 
 

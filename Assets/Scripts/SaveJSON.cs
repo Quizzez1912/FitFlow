@@ -8,15 +8,21 @@ using UnityEngine.UI;
 
 // Codebasis ist von https://www.youtube.com/watch?v=Wu4SGitck7M
 
+
 public class SaveJSON : MonoBehaviour
 {
    // public Slider levelSlider;
     private PlayerData playerData;
+    private  PlayerData newPlayerData;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        playerData = PlayerData.Instance;
+       playerData = PlayerData.Instance;
+
+      
+
         
         //levelSlider.onValueChanged.AddListener(delegate { SaveData(); });
     }
@@ -27,10 +33,8 @@ public class SaveJSON : MonoBehaviour
      
         
 
-
-
-
     }
+    
 
     // Speichern des Spielstandes
     public void SaveData()
@@ -47,7 +51,6 @@ public class SaveJSON : MonoBehaviour
        
       
     }
-
 
     // Laden des Spielstandes
     public void LoadData()
