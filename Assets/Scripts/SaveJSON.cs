@@ -14,6 +14,7 @@ public class SaveJSON : MonoBehaviour
    // public Slider levelSlider;
     private PlayerData playerData;
     private  PlayerData newPlayerData;
+    
 
 
     // Start is called before the first frame update
