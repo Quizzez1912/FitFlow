@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEditor.Experimental.RestService;
 using UnityEngine;
@@ -33,10 +34,10 @@ public class Eventsystem : MonoBehaviour
     private TextMeshProUGUI traingNameTxt;
     private TextMeshProUGUI traingGoalTxt;
 
-
+    private Workoutmanagment workoutmanagment;
     #endregion
 
-    
+
     public int streak = 0;
     public string rank = "A";
     public int levelExc1 = 0;
@@ -49,7 +50,7 @@ public class Eventsystem : MonoBehaviour
 
 
     public int trainingTime = 0;
-    public int traingName = 0;
+    public string[] traingName = new string[] { "Situp", "Jumping Jacks", "Plank","Situp", "Squat" }; 
     public int traingGoal = 0;
 
 
@@ -60,6 +61,20 @@ public class Eventsystem : MonoBehaviour
     private Slider slider;
     private float targetValue;
     private float fillSpeed = 10;
+
+
+    //-------------------- Navigation -----------------------------
+
+    public GameObject homeTAB;
+    public GameObject profileTAB;
+    public GameObject workoutChoosePanel;
+    public GameObject workoutPanel;
+    public GameObject workout1Panel;
+    public GameObject workout2Panel;
+    public GameObject workout3Panel;
+    public GameObject workout4Panel;
+    public GameObject workout5Panel;
+
 
 
 
@@ -78,9 +93,9 @@ public class Eventsystem : MonoBehaviour
 
         streakImage = streakSymbolObj.GetComponent<RawImage>();
 
-        
-        
 
+
+     
 
     }
 
@@ -111,6 +126,8 @@ public class Eventsystem : MonoBehaviour
 
     }
 
+   
+
 
     public void reloadStats()
     {
@@ -135,8 +152,8 @@ public class Eventsystem : MonoBehaviour
         setXP(xp);
         streakTxt.text = streak.ToString();
         rankTxt.text = rank;
-
         checkStreak();
+
 
     }
 
@@ -174,6 +191,125 @@ public class Eventsystem : MonoBehaviour
         }
     }
 
+
+
+
+
+    // -------------- Navigation -------------------------
+
+    /*
+     * 0 Home Tab
+     * 1 Profile
+     * 2 Workout Menu
+     * 3 Inside Workout
+     * 
+     */
+
+    public void navigateTo(int choose)
+    {
+        switch (choose)
+        {
+            case 0:
+                homeTAB.SetActive(true);
+                profileTAB.SetActive(false);
+                workoutChoosePanel.SetActive(false);
+                workoutPanel.SetActive(false);
+                break;
+            
+            case 1:
+                homeTAB.SetActive(false);
+                profileTAB.SetActive(true);
+                workoutChoosePanel.SetActive(false);
+                workoutPanel.SetActive(false);
+                break;
+            
+            case 2:
+                homeTAB.SetActive(false);
+                profileTAB.SetActive(false);
+                workoutChoosePanel.SetActive(true);
+                workoutPanel.SetActive(false);
+                break;
+        
+            case 3:
+            homeTAB.SetActive(false);
+            profileTAB.SetActive(false);
+            workoutChoosePanel.SetActive(false);
+            workoutPanel.SetActive(true);
+            break;
+
+        }
+      
+    }
+
+    
+    
+    /*
+     * 1 Push Up
+     * 2 Jumping Jacks
+     * 3 Plank
+     * 4 Situp
+     * 5 Squat
+     */
+
+    public void navigateWorkout(int choose)
+    {
+
+        switch (choose)
+        {
+            case 1:
+                workout1Panel.SetActive(true);
+                workout2Panel.SetActive(false);
+                workout3Panel.SetActive(false);
+                workout4Panel.SetActive(false);
+                workout5Panel.SetActive(false);
+                workoutmanagment.setWorkout(1);
+                break;
+                
+
+            case 2:
+                workout1Panel.SetActive(false);
+                workout2Panel.SetActive(true);
+                workout3Panel.SetActive(false);
+                workout4Panel.SetActive(false);
+                workout5Panel.SetActive(false);
+                workoutmanagment.setWorkout(2);
+                break;
+
+
+            case 3:
+                workout1Panel.SetActive(false);
+                workout2Panel.SetActive(false);
+                workout3Panel.SetActive(true);
+                workout4Panel.SetActive(false);
+                workout5Panel.SetActive(false);
+                workoutmanagment.setWorkout(3);
+                break;
+
+            case 4:
+                workout1Panel.SetActive(false);
+                workout2Panel.SetActive(false);
+                workout3Panel.SetActive(false);
+                workout4Panel.SetActive(true);
+                workout5Panel.SetActive(false);
+                workoutmanagment.setWorkout(4);
+                break;
+
+            case 5:
+                workout1Panel.SetActive(false);
+                workout2Panel.SetActive(false);
+                workout3Panel.SetActive(false);
+                workout4Panel.SetActive(false);
+                workout5Panel.SetActive(true);
+                workoutmanagment.setWorkout(5);
+                break;
+
+           
+
+        }
+
+        this.navigateTo(3);
+
+    }
 
 
 

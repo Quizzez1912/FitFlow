@@ -6,10 +6,10 @@ using TMPro;
 using System;
 
 // Codebasis ist von https://www.youtube.com/watch?v=b1ONIoDfUes&ab_channel=Prism
-public class changeWorkoutname : MonoBehaviour
+public class Workoutmanagment : MonoBehaviour
 {
 
-
+    public int choosenWorkout;
    
     public GameObject workoutnameObj;
     public GameObject goalObj;
@@ -44,6 +44,9 @@ public class changeWorkoutname : MonoBehaviour
         timeTxt.text = time.Minutes.ToString() + ":" + time.Seconds.ToString() + ":" + time.Milliseconds.ToString();
     }
 
+
+
+    // ------------------- Timer -----------------------
     public void StartTimer()
     {
         Debug.Log("start Watch");
@@ -62,4 +65,19 @@ public class changeWorkoutname : MonoBehaviour
         isPaused = true;
         currentTime = 0f;
     }
+
+
+
+    // ------------------- Workout Selection -----------------------
+
+    public void setWorkout(int choose)
+    {
+        choosenWorkout = choose;
+    }
+
+    public int getWorkout()
+    {
+        return choosenWorkout;
+    }
+
 }
