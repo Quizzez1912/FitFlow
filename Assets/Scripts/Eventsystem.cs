@@ -50,7 +50,8 @@ public class Eventsystem : MonoBehaviour
 
 
     public int trainingTime = 0;
-    public string[] traingName = new string[] { "Situp", "Jumping Jacks", "Plank","Situp", "Squat" }; 
+    public int choosenTraining;
+    public string[] trainingName = new string[] { "filler" ,"Pushup", "Jumping Jacks", "Plank","Situp", "Squat" }; 
     public int traingGoal = 0;
 
 
@@ -93,9 +94,11 @@ public class Eventsystem : MonoBehaviour
 
         streakImage = streakSymbolObj.GetComponent<RawImage>();
 
+        workoutmanagment = new Workoutmanagment();
 
 
-     
+
+
 
     }
 
@@ -153,6 +156,7 @@ public class Eventsystem : MonoBehaviour
         streakTxt.text = streak.ToString();
         rankTxt.text = rank;
         checkStreak();
+        //  traingNameTxt.text = trainingName[workoutmanagment.getWorkout()]; nachdem es aus dem Update() genommen wurde
 
 
     }
@@ -253,6 +257,7 @@ public class Eventsystem : MonoBehaviour
 
     public void navigateWorkout(int choose)
     {
+        
 
         switch (choose)
         {
@@ -307,7 +312,9 @@ public class Eventsystem : MonoBehaviour
 
         }
 
+        traingNameTxt.text = trainingName[workoutmanagment.getWorkout()];
         this.navigateTo(3);
+        
 
     }
 
