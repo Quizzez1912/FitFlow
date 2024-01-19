@@ -87,4 +87,8 @@ public class PlayerData
         this.levelExc5 = levelExc5;
     }
 
+    public void setStreak(int streak)
+    {
+        this.streak = streak;
+    }
 }
