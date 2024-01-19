@@ -13,18 +13,24 @@ public class SaveJSON : MonoBehaviour
 {
    // public Slider levelSlider;
     private PlayerData playerData;
-    private  PlayerData newPlayerData;
-    
+    private  PlayerData newPlayerdata;
 
+    private Datecalc dateCalc;
 
     // Start is called before the first frame update
     void Start()
     {
        playerData = PlayerData.Instance;
+       dateCalc = FindObjectOfType<Datecalc>();
 
-      
+        LoadData();
 
-        
+        playerData.streak = dateCalc.getStreak();
+
+        SaveData();
+
+        LoadData();
+
         //levelSlider.onValueChanged.AddListener(delegate { SaveData(); });
     }
 

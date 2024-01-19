@@ -103,7 +103,7 @@ public class Eventsystem : MonoBehaviour
     {
         saveMenu = GetComponent<SaveJSON>();
 
-        //saveMenu.LoadData();
+      
          slider = sliderObj.GetComponent<Slider>();
 
         playerLevelTxt = playerLevelObj.GetComponent<TextMeshProUGUI>();
