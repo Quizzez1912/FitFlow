@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 // Codebasis ist von https://www.youtube.com/watch?v=b1ONIoDfUes&ab_channel=Prism
 public class Workoutmanagment : MonoBehaviour
@@ -15,7 +16,9 @@ public class Workoutmanagment : MonoBehaviour
     public GameObject goalObj;
     public GameObject timeObj;
 
-     TextMeshProUGUI workoutnameTxt;
+    public int[] trainingGoals = new int[] { 0, 5, 5, 7, 7, 10, 10, 12, 12, 15, 15, 17, 17, 17 }; // reps index 0 gibt es nicht, da Level bei 1 beginnt
+
+    TextMeshProUGUI workoutnameTxt;
      TextMeshProUGUI goalTxt;
      TextMeshProUGUI timeTxt;
 
@@ -23,6 +26,12 @@ public class Workoutmanagment : MonoBehaviour
     private float currentTime;
 
     private bool isPaused;
+
+
+
+
+    private PlayerData playerData;
+
 
     private void Awake()
     {
@@ -32,6 +41,9 @@ public class Workoutmanagment : MonoBehaviour
 
         isPaused = true;
         currentTime = 0f;
+
+
+        playerData = PlayerData.Instance;
     }
 
     private void Update()
@@ -79,5 +91,19 @@ public class Workoutmanagment : MonoBehaviour
     {
         return choosenWorkout;
     }
+
+   
+
+    // ----------------- Workout Level ----------------------------------
+
+    public int getGoal(int playerWorkoutLevel) {
+
+        Debug.Log(playerWorkoutLevel + "return will be " + trainingGoals[playerWorkoutLevel]);
+  
+        return trainingGoals[playerWorkoutLevel];
+
+    }
+
+    
 
 }

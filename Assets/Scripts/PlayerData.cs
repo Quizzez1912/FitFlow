@@ -65,7 +65,7 @@ public class PlayerData
         {
             if (_instance == null)
             {
-                _instance = new PlayerData(55,88.5f, 1, "RANK LOL", 1, 1, 1, 1, 1);
+                _instance = new PlayerData(55,88.5f, 1, "Dummy", 1, 1, 1, 1, 1);
             }
             return _instance;
         }
