@@ -77,10 +77,9 @@ public class Datecalc : MonoBehaviour
     {
         Debug.Log("currentDate===========  " + currentDate.ToString("dd.MM.yyyy"));
         Debug.Log("lastLoginDate ===========  " + lastLoginDate.ToString("dd.MM.yyyy"));
-
-
+        
+        
         TimeSpan ts = currentDate - lastLoginDate;
-
         Debug.Log("Zeitdifferenz ===========  " + ts.Days.ToString());
 
 

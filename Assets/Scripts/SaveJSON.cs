@@ -20,16 +20,15 @@ public class SaveJSON : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       playerData = PlayerData.Instance;
-
-
-       dateCalc = FindObjectOfType<Datecalc>();
-
+        playerData = PlayerData.Instance;
         LoadData();
 
+        dateCalc = FindObjectOfType<Datecalc>();
+
+        
         playerData.streak = dateCalc.getStreak();
 
-        Debug.Log("################# PLayer Streak before SAVBE+======== " + playerData.streak);
+        Debug.Log("################# PLayer Streak before SAVE======== " + playerData.streak);
         SaveData();
 
         LoadData();
