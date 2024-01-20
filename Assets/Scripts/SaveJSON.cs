@@ -21,12 +21,15 @@ public class SaveJSON : MonoBehaviour
     void Start()
     {
        playerData = PlayerData.Instance;
+
+
        dateCalc = FindObjectOfType<Datecalc>();
 
         LoadData();
 
         playerData.streak = dateCalc.getStreak();
 
+        Debug.Log("################# PLayer Streak before SAVBE+======== " + playerData.streak);
         SaveData();
 
         LoadData();

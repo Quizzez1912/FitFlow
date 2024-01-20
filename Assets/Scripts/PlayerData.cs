@@ -15,15 +15,15 @@ public class PlayerData
 
 
 
-    public int playerLevel = 0;
-    public float xp = 0;
-    public int streak = 0;
+    public int playerLevel = 999;
+    public float xp = 999;
+    public int streak = 999;
     public string rank = "Anfänger";
-    public int levelExc1 = 0;
-    public int levelExc2 = 0;
-    public int levelExc3 = 0;
-    public int levelExc4 = 0;
-    public int levelExc5 = 0;
+    public int levelExc1 = 999;
+    public int levelExc2 = 999;
+    public int levelExc3 = 999;
+    public int levelExc4 = 999;
+    public int levelExc5 = 999;
 
 
 

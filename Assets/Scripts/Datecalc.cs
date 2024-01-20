@@ -5,49 +5,44 @@ using TMPro;
 using UnityEngine.UI;
 using System.IO;
 using System;
+using System.Xml.Linq;
+using Unity.VisualScripting;
 
 // Codebasis ist von https://www.youtube.com/watch?v=Z6pEAngpR9I&ab_channel=OXMONDTech
 
 public class Datecalc : MonoBehaviour
 {
     string date;
-    string lastloginString;
-    int calcStreak;
-
 
     DateTime currentDate;
     DateTime lastLoginDate;
-    TimeSpan ts;
+    DateTime lastIncrementDate;
+
+
     int streak;
     PlayerData playerData;
+
+    private void Awake()
+    {
+        LoadLastLogin();
+    }
+
 
     // Start is called before the first frame update
     void Start()
     {
         date = System.DateTime.UtcNow.ToLocalTime().ToString("dd.MM.yyyy");
-
         currentDate = System.DateTime.Parse(date);
-        LoadLastLogin();
 
-        checkLoginDay();
-    
+        //LoadLastLogin();
 
 
-        // lastLogin = "12.01.2024"; // as json lesen und setzen am Anfang
-        // lastLoginDate = System.DateTime.Parse(lastLogin);
+        Debug.Log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ player streak attrb " + playerData.streak);
 
-        ts = currentDate - lastLoginDate;
+       
 
-        Debug.Log("difference in days " + ts.Days);
+        // SaveLastLogin();  kommt gleicg weh
 
-        streak = int.Parse(ts.Days.ToString());
-
-
-
-        Debug.Log("The Streak is  " + streak);
-
-       // SaveLastLogin();  kommt gleicg weh
-     
     }
 
     // Update is called once per frame
@@ -59,6 +54,11 @@ public class Datecalc : MonoBehaviour
 
     public int getStreak()
     {
+        playerData = PlayerData.Instance;
+        streak = playerData.streak;
+        checkLoginDay();
+        Debug.Log("return getStreak " + streak);
+        SaveLastLogin();
         return streak;
     }
 
@@ -76,23 +76,35 @@ public class Datecalc : MonoBehaviour
     public void checkLoginDay()
     {
         Debug.Log("currentDate===========  " + currentDate.ToString("dd.MM.yyyy"));
-        Debug.Log("LastLoginDate ===========  " + lastLoginDate.ToString("dd.MM.yyyy"));
+        Debug.Log("lastLoginDate ===========  " + lastLoginDate.ToString("dd.MM.yyyy"));
 
 
-        TimeSpan tsLogin = currentDate - lastLoginDate;
+        TimeSpan ts = currentDate - lastLoginDate;
 
-        Debug.Log("Calculated TimeSPan Login ===========  " + tsLogin.Days.ToString());
+        Debug.Log("Zeitdifferenz ===========  " + ts.Days.ToString());
 
 
-        if (int.Parse(tsLogin.Days.ToString()) > 1) {
-            Debug.Log("Streak endet, da Spieler gestern nicht eingeloggt war");
+        // Wenn die Differenz 1 Tag beträgt zwischen currentDate und lastLogin, dann ist eine Streak aktiv.
+        if (ts.Days == 1)
+        {
+            streak++;
             lastLoginDate = currentDate;
-            SaveLastLogin() ;
-            LoadLastLogin();
+
+        }
+        else if (ts.Days > 1) // Wenn die Differenz mehr als 1 Tag beträgt zwischen currentDate und LastLogin, dann ist KEINE Streak mehr aktiv.
+        {
+            lastLoginDate = currentDate;
+            streak = 0;
+
+        }
+        else
+        {
+            Debug.Log("Streak bereits erhöht --------------------------- ");
+
         }
 
     }
-    
+
     // TODO Json speichern lastlogin und 1stlogin und dann streak checken
 
     public void LoadLastLogin()
@@ -103,27 +115,27 @@ public class Datecalc : MonoBehaviour
         {
             json = reader.ReadToEnd();
         }
-        lastloginString = date;
-        lastLoginDate = System.DateTime.Parse(lastloginString);
-
-        Debug.Log("loaded Lastlogin: " + date);
-
-
+        Debug.Log("loaded Lastlogin: " + json);
+        lastLoginDate = System.DateTime.Parse(json);
 
     }
 
     public void SaveLastLogin()
     {
-        Debug.Log("saved lastlogin  " + lastLoginDate.ToString());
+        Debug.Log("saved lastlogin  " + lastLoginDate.ToString("dd.MM.yyyy"));
+        string json = lastLoginDate.ToString("dd.MM.yyyy");
+
 
         using (StreamWriter write = new StreamWriter(Application.dataPath + Path.AltDirectorySeparatorChar + "SaveLastLogin.json"))
         {
-
-            write.Write(lastloginString);
+            write.Write(json);
         }
+
 
 
 
     }
 
+
 }
+
