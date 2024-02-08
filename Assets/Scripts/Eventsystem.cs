@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using System.Xml.XPath;
 using TMPro;
 using UnityEditor.Experimental.RestService;
 using UnityEngine;
@@ -38,6 +39,8 @@ public class Eventsystem : MonoBehaviour
     #endregion
 
 
+    public int playerLevel = 0;
+    public float xp = 0;   
     public int streak = 0;
     public string rank = "A";
     public int levelExc1 = 0;
@@ -55,17 +58,12 @@ public class Eventsystem : MonoBehaviour
     public int choosenTraining;
     public string[] trainingName = new string[] { "filler" ,"Pushup", "Jumping Jacks", "Plank","Situp", "Squat" }; 
     public int traingGoal = 0;
-    
+
 
 
 
     // ------------------- Level Bar ---------------------------
-    public int playerLevel = 0;
-    public float xp = 0;
-    public GameObject sliderObj;
-    private Slider slider;
-    private float targetValue;
-    private float fillSpeed = 10;
+    private Levelbar lvlBar;
 
 
     //-------------------- Navigation -----------------------------
@@ -104,7 +102,7 @@ public class Eventsystem : MonoBehaviour
         saveMenu = GetComponent<SaveJSON>();
 
       
-         slider = sliderObj.GetComponent<Slider>();
+        lvlBar = GetComponent<Levelbar>();
 
         playerLevelTxt = playerLevelObj.GetComponent<TextMeshProUGUI>();
 
@@ -146,14 +144,6 @@ public class Eventsystem : MonoBehaviour
       
 
 
-        if (slider.value < targetValue)
-        {
-            slider.value += fillSpeed * Time.deltaTime;
-
-        }
-
-
-
 
     }
 
@@ -188,7 +178,7 @@ public class Eventsystem : MonoBehaviour
     {
         reloadStats(); 
         playerLevelTxt.text = playerLevel.ToString();
-        setXP(xp);
+        lvlBar.setXP(xp);
         streakTxt.text = streak.ToString();
         rankTxt.text = rank;
         checkStreak();
@@ -200,19 +190,6 @@ public class Eventsystem : MonoBehaviour
 
 
 
-
-
-    //---------------- Level Bar Code ------------------
-
-    public void addXP(float newXP)
-    {
-        targetValue = slider.value + newXP;
-    }
-
-    public void setXP(float newXP)
-    {
-        slider.value = newXP;
-    }
 
 
     // --------------- Streak Code ----------------------

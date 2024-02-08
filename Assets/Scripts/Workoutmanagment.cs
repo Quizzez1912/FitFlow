@@ -19,8 +19,8 @@ public class Workoutmanagment : MonoBehaviour
     public int[] trainingGoals = new int[] { 0, 5, 5, 7, 7, 10, 10, 12, 12, 15, 15, 17, 17, 17 }; // reps index 0 gibt es nicht, da Level bei 1 beginnt
 
     TextMeshProUGUI workoutnameTxt;
-     TextMeshProUGUI goalTxt;
-     TextMeshProUGUI timeTxt;
+    TextMeshProUGUI goalTxt;
+    TextMeshProUGUI timeTxt;
 
 
     private float currentTime;
@@ -28,9 +28,16 @@ public class Workoutmanagment : MonoBehaviour
     private bool isPaused;
 
 
+    public GameObject startObj;
+    public GameObject stopObj;
+    public GameObject finishWorkout;
+
 
 
     private PlayerData playerData;
+
+    private Levelbar lvlBar;
+  
 
 
     private void Awake()
@@ -42,7 +49,7 @@ public class Workoutmanagment : MonoBehaviour
         isPaused = true;
         currentTime = 0f;
 
-
+        lvlBar = GetComponent<Levelbar>();
         playerData = PlayerData.Instance;
     }
 
@@ -63,12 +70,17 @@ public class Workoutmanagment : MonoBehaviour
     {
         Debug.Log("start Watch");
         isPaused = false;
+        startObj.SetActive(false);
+        stopObj.SetActive(true);
     }
 
     public void Pause()
     {
         Debug.Log("Pause Watch");
         isPaused = true;
+        startObj.SetActive(false);
+        stopObj.SetActive(false);
+        finishWorkout.SetActive(true);
     }
 
     public void ResetTimer()
@@ -76,6 +88,11 @@ public class Workoutmanagment : MonoBehaviour
         Debug.Log("reset Watch");
         isPaused = true;
         currentTime = 0f;
+        startObj.SetActive(true);
+        stopObj.SetActive(false);
+        finishWorkout.SetActive(false);
+        playerData = PlayerData.Instance;
+
     }
 
 
@@ -104,6 +121,20 @@ public class Workoutmanagment : MonoBehaviour
 
     }
 
-    
+
+    // Berechnet die XP nach dem Training 
+    public void finishTraining() {
+
+        int streak = playerData.streak;
+        float multiplier = 1.25f; // gewünschten Multiplikator 
+        float calcXP = 10 * (float)Math.Pow(multiplier, streak);
+        Debug.Log(calcXP + "XP ADDED");
+        lvlBar.addXP(calcXP);
+      
+
+
+
+
+    }
 
 }

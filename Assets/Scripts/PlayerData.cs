@@ -91,4 +91,8 @@ public class PlayerData
     {
         this.streak = streak;
     }
+
+    public void lvlUp() {
+        playerLevel++;
+    }
 }
