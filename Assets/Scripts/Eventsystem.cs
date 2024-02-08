@@ -163,7 +163,7 @@ public class Eventsystem : MonoBehaviour
         levelExc3 = playerData.levelExc3;
         levelExc4 = playerData.levelExc4;
         levelExc5 = playerData.levelExc5;
-
+        
 
         levelExc1TXT.text = ("Level " + Convert.ToString(levelExc1));
         levelExc2TXT.text = ("Level " + Convert.ToString(levelExc2));
@@ -178,7 +178,7 @@ public class Eventsystem : MonoBehaviour
     {
         reloadStats(); 
         playerLevelTxt.text = playerLevel.ToString();
-        lvlBar.setXP(xp);
+        lvlBar.setXP(xp); //set User XP and refreshes lvlbar display
         streakTxt.text = streak.ToString();
         rankTxt.text = rank;
         checkStreak();

@@ -37,8 +37,8 @@ public class Workoutmanagment : MonoBehaviour
     private PlayerData playerData;
 
     private Levelbar lvlBar;
-  
 
+    SaveJSON saveMenu;
 
     private void Awake()
     {
@@ -51,6 +51,7 @@ public class Workoutmanagment : MonoBehaviour
 
         lvlBar = GetComponent<Levelbar>();
         playerData = PlayerData.Instance;
+        saveMenu = GetComponent<SaveJSON>();
     }
 
     private void Update()
@@ -130,7 +131,10 @@ public class Workoutmanagment : MonoBehaviour
         float calcXP = 10 * (float)Math.Pow(multiplier, streak);
         Debug.Log(calcXP + "XP ADDED");
         lvlBar.addXP(calcXP);
-      
+        playerData.lvlupExcercise(getWorkout());
+        saveMenu.SaveData();
+
+
 
 
 

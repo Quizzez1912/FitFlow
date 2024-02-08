@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class PlayerData 
+public class PlayerData
 {
 
 
@@ -65,7 +65,7 @@ public class PlayerData
         {
             if (_instance == null)
             {
-                _instance = new PlayerData(55,88.5f, 1, "Dummy", 1, 1, 1, 1, 1);
+                _instance = new PlayerData(55, 88.5f, 1, "Dummy", 1, 1, 1, 1, 1);
             }
             return _instance;
         }
@@ -74,7 +74,7 @@ public class PlayerData
     }
 
 
-    public void SetPlayerData(int playerlevel,float xp, int streak, string rank, int levelExc1, int levelExc2, int levelExc3, int levelExc4, int levelExc5)
+    public void SetPlayerData(int playerlevel, float xp, int streak, string rank, int levelExc1, int levelExc2, int levelExc3, int levelExc4, int levelExc5)
     {
         this.playerLevel = playerlevel;
         this.xp = xp;
@@ -92,7 +92,79 @@ public class PlayerData
         this.streak = streak;
     }
 
-    public void lvlUp() {
-        playerLevel++;
+
+
+    public void setPlayerXP(float xp)
+    {
+        if (xp > 100)
+        {
+
+            this.xp = xp - 100;
+            playerLevel++;
+            Debug.Log(playerLevel + "Player LVL UP TO LVL");
+            checkRank();
+
+        }
+        else
+        {
+            this.xp = xp;
+
+        }
+
     }
+
+
+
+    public void checkRank()
+    {
+
+        switch (playerLevel)
+        {
+            case int lvl when lvl <= 5:
+                rank = "Anfänger";
+                break;
+            case int lvl when lvl >= 6 && lvl <= 15:
+                rank = "Einsteiger";
+                break;
+            case int lvl when lvl >= 16 && lvl <= 20:
+                rank = "Neuling";
+                break;
+            case int lvl when lvl >= 21 && lvl <= 25:
+                rank = "Rookie";
+                break;
+            case int lvl when lvl >= 26 && lvl <= 30:
+                rank = "Fortgeschrittener";
+                break;
+
+        }
+
+        Debug.Log(rank + "check rank");
+
+    }
+
+
+
+
+    public void lvlupExcercise(int workoutNumber)
+    {
+        switch (workoutNumber)
+        {
+            case 1:
+                levelExc1++;
+                break;
+            case 2:
+                levelExc2++;
+                break;
+            case 3:
+                levelExc3++;
+                break;
+            case 4:
+                levelExc4++;
+                break;
+            case 5:
+                levelExc5++;
+                break;
+        }
+    }
+
 }

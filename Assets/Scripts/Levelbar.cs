@@ -10,7 +10,8 @@ public class Levelbar : MonoBehaviour
     private Slider slider;
     private float targetValue;
     private float fillSpeed = 10;
-    
+
+    float playerXP = 0;
 
     public GameObject LVLbarObj;
 
@@ -19,6 +20,7 @@ public class Levelbar : MonoBehaviour
 
     PlayerData playerData;
 
+    SaveJSON saveMenu;
     private void Awake()
     {
         slider = LVLbarObj.GetComponent<Slider>();
@@ -27,7 +29,7 @@ public class Levelbar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        addXP(20);
+        saveMenu = GetComponent<SaveJSON>();
     }
 
     // Update is called once per frame
@@ -41,7 +43,8 @@ public class Levelbar : MonoBehaviour
 
         if(slider.value == slider.maxValue)
         {
-            playerData.lvlUp();
+            playerData.playerLevel++;
+            Debug.Log(playerData.playerLevel + "Player LVL UP TO LVL");
             newLevel();
 
         }
@@ -49,23 +52,30 @@ public class Levelbar : MonoBehaviour
 
     public void addXP(float newXP)
     {
+        playerData = PlayerData.Instance;
         targetValue = slider.value + newXP;
         refreshLvlText();
+        playerData.setPlayerXP(targetValue);
+        playerXP = targetValue;
+        saveMenu.SaveData();
     }
 
     public void setXP(float newXP)
     {
-        slider.value = newXP;   
+        slider.value = newXP;
+        playerXP = newXP;
+        refreshLvlText();
     }
 
 
     public void newLevel() {
    
         slider.maxValue = playerData.playerLevel * 50;
+       
     }
 
     public void refreshLvlText()
     {
-        lvltxt.text = (Convert.ToString(targetValue) + " / " + Convert.ToString(slider.maxValue));
+        lvltxt.text = (Convert.ToString(Mathf.RoundToInt(playerXP)) + " / " + Convert.ToString(slider.maxValue));
     }
 }
