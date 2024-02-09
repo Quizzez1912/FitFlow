@@ -69,6 +69,7 @@ public class Eventsystem : MonoBehaviour
     //-------------------- Navigation -----------------------------
 
     public GameObject homeTAB;
+    public GameObject helpPanel;
     public GameObject profileTAB;
     public GameObject workoutChoosePanel;
     public GameObject workoutPanel;
@@ -340,6 +341,12 @@ public class Eventsystem : MonoBehaviour
 
     }
 
+    public void toggleHelpPanel() {
+ 
+        helpPanel.SetActive(!helpPanel.activeSelf) ;
+        
+
+}
 
 
 }
