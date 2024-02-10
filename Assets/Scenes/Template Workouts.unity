@@ -593,6 +593,7 @@ GameObject:
   - component: {fileID: 107518559}
   - component: {fileID: 107518560}
   - component: {fileID: 107518561}
+  - component: {fileID: 107518562}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -785,6 +786,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LVLbarObj: {fileID: 1444767930}
   lvltxtObj: {fileID: 236571016}
+--- !u!114 &107518562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107518551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa1d607b335971b4e8b17b2e1d4f6c94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  streakCount: 010000000300000007000000
+  trainingCount: 010000001400000032000000
+  xpEarned: 64000000f4010000e8030000
+  streakGoal: 'Aufstieg bei Streak = '
+  trainingGoal: 'Aufstieg nach '
+  trainingGoal2: ' absolvierten Trainings = '
+  xpGoal: 'Aufstieg nach  verdient = '
+  xpGoal2: ' verdienten XP '
+  medal1: {fileID: 2800000, guid: 5d83012c64086ad49883a6bbdda32bd6, type: 3}
+  medal2: {fileID: 2800000, guid: ee628f5dd27b8e84593a0dc962788f2a, type: 3}
+  medal3: {fileID: 2800000, guid: edbb7f053d982f1429e3817a3f5d3f0c, type: 3}
+  noMedal: {fileID: 2800000, guid: b7319ec57ca26df4badab747b1cf77c0, type: 3}
+  streakImage: {fileID: 1577686539}
+  trainingImage: {fileID: 103557259}
+  XPImage: {fileID: 1097554862}
+  streakGoalOBJ: {fileID: 698547852}
+  trainingCountOBJ: {fileID: 498198656}
+  XpGoalOBJ: {fileID: 942752798}
 --- !u!1 &117758961
 GameObject:
   m_ObjectHideFlags: 0
@@ -3400,7 +3431,7 @@ GameObject:
   - component: {fileID: 495036081}
   - component: {fileID: 495036080}
   m_Layer: 5
-  m_Name: Titel of Workout
+  m_Name: Titel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3445,7 +3476,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Trainings-sessions
+  m_text: "Durchgef\xFChrte Trainings"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3454,8 +3485,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3534,7 +3565,7 @@ GameObject:
   - component: {fileID: 498198659}
   - component: {fileID: 498198658}
   m_Layer: 5
-  m_Name: Level 1
+  m_Name: TrainingsGoal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4996,7 +5027,7 @@ GameObject:
   - component: {fileID: 698547855}
   - component: {fileID: 698547854}
   m_Layer: 5
-  m_Name: Level 1
+  m_Name: StreakGoal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6401,7 +6432,7 @@ GameObject:
   - component: {fileID: 942752801}
   - component: {fileID: 942752800}
   m_Layer: 5
-  m_Name: Level 1
+  m_Name: XPGoal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6535,7 +6566,7 @@ GameObject:
   - component: {fileID: 956729795}
   - component: {fileID: 956729794}
   m_Layer: 5
-  m_Name: Titel of Workout
+  m_Name: Titel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6589,8 +6620,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -10072,7 +10103,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1438541232}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 107518562}
+        m_TargetAssemblyTypeName: loadTrophy, Assembly-CSharp
+        m_MethodName: refreshMedals
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1438541232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15152,7 +15195,7 @@ GameObject:
   - component: {fileID: 2057262568}
   - component: {fileID: 2057262567}
   m_Layer: 5
-  m_Name: Titel of Workout
+  m_Name: 'Titel '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15174,8 +15217,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0.000015258789, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 0.000038146973, y: 0}
+  m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &2057262567
 MonoBehaviour:
@@ -15197,7 +15240,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Pushup
+  m_text: Gesammelte XP
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -15206,8 +15249,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
