@@ -79,6 +79,8 @@ public class Eventsystem : MonoBehaviour
     public GameObject workout4Panel;
     public GameObject workout5Panel;
 
+    public GameObject trophyPanel;
+
 
 
     public TextMeshProUGUI levelExc1Obj;
@@ -220,7 +222,7 @@ public class Eventsystem : MonoBehaviour
      * 1 Profile
      * 2 Workout Menu
      * 3 Inside Workout
-     * 
+     * 4 Trophy
      */
 
     public void navigateTo(int choose)
@@ -232,6 +234,7 @@ public class Eventsystem : MonoBehaviour
                 profileTAB.SetActive(false);
                 workoutChoosePanel.SetActive(false);
                 workoutPanel.SetActive(false);
+                trophyPanel.SetActive(false);
                 break;
             
             case 1:
@@ -239,6 +242,7 @@ public class Eventsystem : MonoBehaviour
                 profileTAB.SetActive(true);
                 workoutChoosePanel.SetActive(false);
                 workoutPanel.SetActive(false);
+                trophyPanel.SetActive(false);
                 break;
             
             case 2:
@@ -246,6 +250,7 @@ public class Eventsystem : MonoBehaviour
                 profileTAB.SetActive(false);
                 workoutChoosePanel.SetActive(true);
                 workoutPanel.SetActive(false);
+                trophyPanel.SetActive(false);
                 break;
         
             case 3:
@@ -253,7 +258,16 @@ public class Eventsystem : MonoBehaviour
             profileTAB.SetActive(false);
             workoutChoosePanel.SetActive(false);
             workoutPanel.SetActive(true);
+            trophyPanel.SetActive(false);
             break;
+
+            case 4:
+                homeTAB.SetActive(false);
+                profileTAB.SetActive(false);
+                workoutChoosePanel.SetActive(false);
+                workoutPanel.SetActive(false);
+                trophyPanel.SetActive(true);
+                break;
 
         }
       

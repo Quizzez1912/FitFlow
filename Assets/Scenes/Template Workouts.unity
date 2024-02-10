@@ -701,6 +701,7 @@ MonoBehaviour:
   workout3Panel: {fileID: 321006097}
   workout4Panel: {fileID: 1766204969}
   workout5Panel: {fileID: 2032246443}
+  trophyPanel: {fileID: 0}
   levelExc1Obj: {fileID: 1631219828}
   levelExc2Obj: {fileID: 146366174}
   levelExc3Obj: {fileID: 147828052}
@@ -10107,6 +10108,18 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 107518555}
+        m_TargetAssemblyTypeName: Eventsystem, Assembly-CSharp
+        m_MethodName: navigateTo
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
