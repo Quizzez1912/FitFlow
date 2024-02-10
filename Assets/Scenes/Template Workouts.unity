@@ -801,11 +801,6 @@ MonoBehaviour:
   streakCount: 010000000300000007000000
   trainingCount: 010000001400000032000000
   xpEarned: 64000000f4010000e8030000
-  streakGoal: 'Aufstieg bei Streak = '
-  trainingGoal: 'Aufstieg nach '
-  trainingGoal2: ' absolvierten Trainings = '
-  xpGoal: 'Aufstieg nach  verdient = '
-  xpGoal2: ' verdienten XP '
   medal1: {fileID: 2800000, guid: 5d83012c64086ad49883a6bbdda32bd6, type: 3}
   medal2: {fileID: 2800000, guid: ee628f5dd27b8e84593a0dc962788f2a, type: 3}
   medal3: {fileID: 2800000, guid: edbb7f053d982f1429e3817a3f5d3f0c, type: 3}
