@@ -70,7 +70,7 @@ public class Levelbar : MonoBehaviour
 
     public void newLevel() {
    
-        slider.maxValue = playerData.playerLevel * 50;
+        slider.maxValue = playerData.playerLevel * 100;
        
     }
 
