@@ -2,9 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
-using UnityEditorInternal;
 using UnityEngine;
-using UnityEngine.UI;
 
 
 public class PlayerData
@@ -65,7 +63,7 @@ public class PlayerData
         {
             if (_instance == null)
             {
-                _instance = new PlayerData(55, 88.5f, 1, "Dummy", 1, 1, 1, 1, 1);
+                _instance = new PlayerData(1, 0, 0, "Anfänger", 1, 1, 1, 1, 1);
             }
             return _instance;
         }

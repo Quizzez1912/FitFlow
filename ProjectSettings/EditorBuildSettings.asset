@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 0
+    path: Assets/Scenes/Template Workouts.unity
+    guid: a94e5905259ceda44bd1399670b50b46
+  - enabled: 1
+    path: Assets/Scenes/Template NO Gami.unity
+    guid: 9e5a071d10993fc4cbb05d5d7f422444
   m_configObjects: {}
